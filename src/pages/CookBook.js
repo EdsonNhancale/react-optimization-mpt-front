@@ -19,6 +19,7 @@ export default function CookBook() {
             <AddNewRecipeForm onAddRecipe={addRecipe} />
             <Link to="/booklists">List</Link>
 
+            {"Unnecessary Rendering"}
             <Footer />
         </>
     )
