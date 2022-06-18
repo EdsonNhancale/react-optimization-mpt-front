@@ -2,6 +2,7 @@ import React from 'react'
 import AddNewRecipeForm from '../components/AddNewRecipeForm'
 import { Link } from "react-router-dom";
 import { useActionsRecipe } from "../hooks/useActionsRecipe";
+import Footer from '../components/Footer';
 
 export default function CookBook() {
     const { addRecipe } = useActionsRecipe()
@@ -17,6 +18,8 @@ export default function CookBook() {
 
             <AddNewRecipeForm onAddRecipe={addRecipe} />
             <Link to="/booklists">List</Link>
+
+            <Footer />
         </>
     )
 }
