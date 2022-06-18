@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import AddNewRecipeForm from "./components/AddNewRecipeForm";
+import RecipesList from "./components/RecipesList";
+import { useState } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+let nextRecipeId = 1;
+
+const App = () => {
+    const [recipes, setRecipes] = useState([]);
+
+    /**
+     * Callback when user add new recipe into recipes list
+     * @param recipe
+     */
+    const onAddRecipe = (recipe) => {
+        const newRecipe = {...recipe, id: nextRecipeId++};
+        console.log('new recipe added !', newRecipe);
+        setRecipes([...recipes, newRecipe]);
+    }
+
+    /**
+     * Callback when user remove recipe into recipes list
+     * @param recipeId
+     */
+    const onRemoveRecipe = (recipeId) => {
+        console.log('remove recipe id', recipeId)
+        setRecipes([...recipes].filter(recipe => recipe.id !== recipeId));
+    }
+
+    return (
+        <div style={{margin: 10}}>
+            <h2>My super cookbook</h2>
+
+            {/*  Form for adding recipes   */}
+            <AddNewRecipeForm onAddRecipe={onAddRecipe} />
+
+            {/*  List of our recipes  */}
+            <RecipesList recipes={recipes} onRemoveRecipe={onRemoveRecipe} />
+
+        </div>
+    );
 }
 
 export default App;
