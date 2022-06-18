@@ -19,7 +19,7 @@ export default function CookBook() {
             <AddNewRecipeForm onAddRecipe={addRecipe} />
             <Link to="/booklists">List</Link>
 
-            {"Unnecessary Rendering - solved, if recipes.length===2"}
+            {/* "Unnecessary Rendering - solved, if recipes.length===2" */}
 
             {React.useMemo(Footer, [recipes.length === 2])}
         </>
